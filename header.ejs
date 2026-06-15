@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof title !== 'undefined' ? title + ' — ' : '' %>Cocktail Explorer</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">The <span>Cocktail</span> Cabinet</a>
+
+  <div class="nav-links">
+    <a href="/category/Cocktail">Cocktails</a>
+    <a href="/category/Shot">Shots</a>
+    <a href="/category/Ordinary%20Drink">Classics</a>
+    <a href="/category/Punch%20%2F%20Party%20Drink">Party</a>
+  </div>
+
+ 
+  <form class="nav-search" action="/search" method="GET">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search cocktails…"
+      value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+      autocomplete="off"
+    />
+    <button type="submit">Go</button>
+  </form>
+</nav>

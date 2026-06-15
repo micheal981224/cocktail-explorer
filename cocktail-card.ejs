@@ -1,0 +1,33 @@
+<div class="featured-img-wrap">
+  <img
+    src="<%= drink.strDrinkThumb %>"
+    alt="<%= drink.strDrink %>"
+    loading="lazy"
+  />
+  <span class="featured-badge">Featured</span>
+</div>
+
+<div class="featured-body">
+  <p class="drink-category"><%= drink.strCategory || 'Cocktail' %></p>
+  <h2 class="drink-name"><%= drink.strDrink %></h2>
+
+  <p class="drink-glass">🥃 Serve in a <%= drink.strGlass %></p>
+
+  <ul class="ingredients-list">
+    <% drink.ingredients.forEach(item => { %>
+      <li>
+        <% if (item.measure) { %><span class="measure"><%= item.measure %></span><% } %>
+        <%= item.ingredient %>
+      </li>
+    <% }) %>
+  </ul>
+
+  <p class="instructions-text"><%= drink.strInstructions %></p>
+
+  <div class="featured-actions">
+    <a href="/cocktail/<%= drink.idDrink %>" class="btn btn-gold">Full Recipe</a>
+    <button id="btn-random" class="btn btn-outline">✦ Surprise Me</button>
+  </div>
+</div>
+
+<script src="/js/main.js"></script>

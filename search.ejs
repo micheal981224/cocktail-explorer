@@ -1,0 +1,54 @@
+<% title = query ? `"${query}"` : 'Search' %>
+<% searchQuery = query %>
+<%- include('partials/header') %>
+
+<div class="container page-pad">
+
+  <div class="search-header">
+    <h2>
+      <% if (query) { %>
+        Results for &ldquo;<span class="text-gold"><%= query %></span>&rdquo;
+      <% } else { %>
+        Search Cocktails
+      <% } %>
+    </h2>
+    <% if (results.length > 0) { %>
+      <p><%= results.length %> recipe<%= results.length !== 1 ? 's' : '' %> found</p>
+    <% } %>
+  </div>
+
+  <% if (error) { %>
+    <p class="error-msg"><%= error %></p>
+  <% } %>
+
+  <% if (query && results.length === 0 && !error) { %>
+    <div class="no-results">
+      <div class="big-icon">🍸</div>
+      <p>No cocktails found for &ldquo;<strong><%= query %></strong>&rdquo;.</p>
+      <p>Try a different name — maybe &ldquo;Mojito&rdquo; or &ldquo;Negroni&rdquo;?</p>
+    </div>
+  <% } %>
+
+  <% if (results.length > 0) { %>
+    <div class="cocktail-grid">
+      <% results.forEach(drink => { %>
+        <a class="cocktail-card" href="/cocktail/<%= drink.idDrink %>">
+          <div class="card-img">
+            <img src="<%= drink.strDrinkThumb %>" alt="<%= drink.strDrink %>" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-category"><%= drink.strCategory || '' %></p>
+            <h3 class="card-name"><%= drink.strDrink %></h3>
+            <p class="card-ingredients">
+              <%= drink.ingredients.map(i => i.ingredient).join(', ') %>
+            </p>
+            <span class="card-link">View Recipe</span>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  <% } %>
+
+</div>
+
+<%- include('partials/footer') %>

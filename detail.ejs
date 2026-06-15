@@ -1,0 +1,74 @@
+
+<% title = drink.strDrink %>
+<%- include('partials/header') %>
+
+<div class="container page-pad">
+
+  
+  <p style="margin-bottom:2rem">
+    <a href="javascript:history.back()" style="color:var(--muted);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase">← Back</a>
+  </p>
+
+  <div class="detail-grid">
+
+   
+    <div>
+      <div class="detail-img">
+        <img src="<%= drink.strDrinkThumb %>" alt="<%= drink.strDrink %>" />
+      </div>
+    </div>
+
+    
+    <div class="detail-body">
+
+      <p class="drink-category"><%= drink.strCategory || 'Cocktail' %></p>
+      <h1 class="detail-title"><%= drink.strDrink %></h1>
+
+     
+      <div class="meta-row">
+        <span class="meta-chip">🥃 <strong><%= drink.strGlass %></strong></span>
+        <% if (drink.strAlcoholic) { %>
+          <span class="meta-chip">🍾 <strong><%= drink.strAlcoholic %></strong></span>
+        <% } %>
+        <% if (drink.strIBA) { %>
+          <span class="meta-chip">🏅 IBA: <strong><%= drink.strIBA %></strong></span>
+        <% } %>
+      </div>
+
+      
+      <div>
+        <p class="section-label">Ingredients</p>
+        <table class="ingredients-table">
+          <% drink.ingredients.forEach(item => { %>
+            <tr>
+              <td><%= item.ingredient %></td>
+              <td><%= item.measure %></td>
+            </tr>
+          <% }) %>
+        </table>
+      </div>
+
+      
+      <div>
+        <p class="section-label">Instructions</p>
+        <p class="instructions-full"><%= drink.strInstructions %></p>
+      </div>
+
+     
+      <% if (drink.strTags) { %>
+        <div>
+          <p class="section-label">Tags</p>
+          <div class="ingredients-list">
+            <% drink.strTags.split(',').forEach(tag => { %>
+              <li style="list-style:none"><%= tag.trim() %></li>
+            <% }) %>
+          </div>
+        </div>
+      <% } %>
+
+    </div>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>

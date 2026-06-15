@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <p class="hero-ornament">✦ &nbsp; Est. The Golden Age &nbsp; ✦</p>
+    <h1>Shake things up.<br><em>Discover your next drink.</em></h1>
+    <p class="hero-sub">Browse thousands of cocktail recipes, classics, and secret concoctions.</p>
+
+    <% if (error) { %>
+      <p class="error-msg" style="text-align:center"><%= error %></p>
+    <% } %>
+  </div>
+</section>
+
+<div class="container">
+
+  <% if (featured) { %>
+ 
+  <div id="featured-card">
+    <%- include('partials/cocktail-card', { drink: featured }) %>
+  </div>
+  <% } %>
+
+  <div class="divider"><span>✦</span></div>
+
+ 
+  <h3 class="section-heading">Browse by Category</h3>
+  <div class="category-pills">
+    <a class="category-pill" href="/category/Cocktail">🍹 Cocktails</a>
+    <a class="category-pill" href="/category/Ordinary%20Drink">🍸 Classics</a>
+    <a class="category-pill" href="/category/Shot">🥃 Shots</a>
+    <a class="category-pill" href="/category/Punch%20%2F%20Party%20Drink">🎉 Party Punch</a>
+    <a class="category-pill" href="/category/Soft%20Drink">🧃 Soft Drinks</a>
+    <a class="category-pill" href="/category/Beer">🍺 Beer</a>
+    <a class="category-pill" href="/category/Coffee%20%2F%20Tea">☕ Coffee &amp; Tea</a>
+    <a class="category-pill" href="/category/Homemade%20Liqueur">🫙 Homemade</a>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>
